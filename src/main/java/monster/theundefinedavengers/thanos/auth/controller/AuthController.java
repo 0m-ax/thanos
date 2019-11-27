@@ -35,7 +35,7 @@ public class AuthController {
     @PostMapping(value="/login")
     public String login(UserDto userDto, HttpServletRequest request,Model model) {
         try {
-            request.login(userDto.getUsername(),userDto.getPassword());
+            request.login(userDto.getEmail(),userDto.getPassword());
             model.addAttribute("e","no");
         }catch (ServletException e){
             model.addAttribute("e","yes");

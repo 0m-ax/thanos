@@ -30,13 +30,13 @@
                    th:text="${error}">Validation error</p>
 
                 <div class="form-group"
-                     th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
+                     th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
                     <label for="email" class="control-label">E-mail</label>
                     <input id="email"
                            class="form-control"
-                           th:field="*{username}"/>
+                           th:field="*{email}"/>
                     <p class="error-message"
-                       th:each="error : ${#fields.errors('username')}"
+                       th:each="error : ${#fields.errors('email')}"
                        th:text="${error}">Validation error</p>
                 </div>
 
