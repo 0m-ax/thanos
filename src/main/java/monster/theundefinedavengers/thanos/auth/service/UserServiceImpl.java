@@ -17,16 +17,16 @@ import java.util.Set;
 @Service
 public class UserServiceImpl {
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
     @Autowired
     RoleRepository roleRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     public User registerNewUserAccount(UserDto userDto) {
         User user = new User();
-        user.setUsername(userDto.getUsername());
+        user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setRoles(new HashSet<Role>(Arrays.asList(roleRepository.findById(1))));
-        return repository.save(user);
+        return userRepository.save(user);
     }
 }
