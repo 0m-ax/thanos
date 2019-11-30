@@ -7,6 +7,31 @@
     <!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+        <img th:src="@{/images/thanos-logo.png}" width="30" height="30" class="d-inline-block align-top" alt="">
+        Bootstrap
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+    </div>
+</nav>
 </div> <!-- card.// -->
 <div class="container">
     <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
@@ -25,7 +50,8 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+<!--                            <span class="input-group-text" id="basic-addon1">@</span>-->
+                            <span class="input-group-text" id="basic-addon1"> <i class="fa fa-user"></i> </span>
                         </div>
                         <input name="username" class="form-control" placeholder="Email" type="email">
                     </div> <!-- input-group.// -->
@@ -33,9 +59,9 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            <span class="input-group-text" id="basic-addon2"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" name='password' placeholder="******" type="password">
+                        <input class="form-control" name='password' placeholder="Password" type="password">
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
 <!--                 <p class="error-message"
