@@ -1,40 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-</head>
+<head th:replace="fragments/head :: head(title='Login')" />
 <body>
-<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
-    <a class="navbar-brand" href="#">
-        <img th:src="@{/images/thanos-logo.png}" width="30" height="30" class="d-inline-block align-top" alt="">
-        Bootstrap
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-        </ul>
-        <span class="navbar-text">
-      Navbar text with an inline element
-    </span>
-    </div>
-</nav>
+<nav th:replace="fragments/navbar :: navbar"/>
+
 </div> <!-- card.// -->
 <div class="container">
-    <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+    <br>  <p class="text-center">Another random text <a href="http://theundefinedavengers.monster/"> click me yes</a></p>
     <hr>
     <div class="row">
 <!--        empty column so that the form is in the middle-->

@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<head th:replace="fragments/head :: head(title='Register')"/>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <title>Registration</title>
-</head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"/>
+
 <div class="container">
     <br>
-    <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/">
-        Bootstrap-ecommerce.com</a></p>
+    <p class="text-center">Another random text <a href="http://theundefinedavengers.monster/"> click me yes</a></p>
     <hr>
     <div class="row">
         <aside class="col-sm-4"></aside>
