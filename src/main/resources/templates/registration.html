@@ -10,9 +10,15 @@
     <p class="text-center">Another random text <a href="http://theundefinedavengers.monster/"> click me yes</a></p>
     <hr>
     <div class="row">
+<!--        <div class="col-md-6 col-md-offset-3">-->
+<!--            <div th:if="${error}">-->
+<!--                <script th:inline="javascript" type="text/javascript" >-->
+<!--                    alert("Passwords don't match");-->
+<!--                </script>-->
+<!--            </div>-->
         <aside class="col-sm-4"></aside>
         <aside class="col-sm-4">
-            <div>
+
                 <div class="card">
                     <article class="card-body">
                         <div th:if="${param.success}">
@@ -23,75 +29,85 @@
                         <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
                         <hr>
                         <p class="text-success text-center">Some message goes here</p>
-                        <form th:object="${user}" method="post">
+                        <form method="post" th:object="${user}">
 
-                            <p class="error-message"
-                               th:if="${#fields.hasGlobalErrors()}"
-                               th:each="error : ${#fields.errors('global')}"
-                               th:text="${error}">Validation error</p>
-
-                            <div class="form-group"
-                                 th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                                    </div>
-                                    <input id="email" name="username" placeholder="Email" type="email"
-                                           class="form-control"
-                                           th:field="*{email}"/>
-                                    <p class="error-message"
-                                       th:each="error : ${#fields.errors('email')}"
-                                       th:text="${error}">Validation error</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group"
-                                 th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                                    </div>
-                                    <input id="password"
-                                           name='password'
-                                           placeholder="Password"
-                                           class="form-control"
-                                           type="password"
-                                           th:field="*{password}"/>
-                                    <p class="error-message"
-                                       th:each="error : ${#fields.errors('password')}"
-                                       th:text="${error}">Validation error</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group"
-                                 th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                                    </div>
-                                    <input
-                                            name='password2'
-                                            placeholder="Repeat password"
-                                            class="form-control"
-                                            type="password"
-                                    />
-                                    <p class="error-message"
-                                       th:each="error : ${#fields.errors('password')}"
-                                       th:text="${error}">Validation error</p>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Register</button>
-                                <span>Already registered? <a href="/" th:href="@{/auth/login}">Login here</a></span>
-                            </div>
-                        </form>
-                    </article>
+<!--albert shit-->
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                    <input class="form-control"
+                           id="name"
+                           placeholder="Provide your full name"
+                           th:field="*{name}"/>
+                    </div>
                 </div>
-            </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                    <input class="form-control"
+                           id="email"
+                           placeholder="E-mail"
+                           th:field="*{email}"/>
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('email')}"
+                       th:text="${error}">Validation error</p>
+                    </div>
+                </div>
+
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                    <input class="form-control"
+                           id="password"
+                           placeholder="Password"
+                           th:field="*{password}"
+                            type="password"/>
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('password')}"
+                       th:text="${error}">Validation error</p>
+                    </div>
+                </div>
+
+                <div class="form-group"
+                     th:classappend="${#fields.hasErrors('password2')}? 'has-error':''">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                    <input class="form-control"
+                           id="password2"
+                           placeholder="Repeat password"
+                           th:field="*{password2}"
+                           type="password"/>
+                    <p class="error-message"
+                       th:each="error : ${#fields.errors('password2')}"
+                       th:text="${error}">Validation error</p>
+                </div>
+                </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit">Register</button>
+                        <span>Already registered? <a href="/" th:href="@{/auth/login}">Login here</a></span>
+                    </div>
+
+
+            </form>
+            </article>
+        </div>
         </aside>
     </div>
 </div>
-
+<!--footer-->
+<hr>
+<nav th:replace="fragments/footer :: footer"/>
 </body>
 </html>
