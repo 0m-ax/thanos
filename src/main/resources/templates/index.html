@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace = "fragments/fragments :: head(title = 'THANOS')">
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(title='Index')" />
 <body>
+<!--navbar-->
+<nav th:replace="fragments/navbar :: navbar"/>
 
-hello
-<nav th:replace = "fragments/fragments :: navbar">
-</nav>
+<!--big photo section-->
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">Something interesting</h1>
+        <p class="lead font-weight-normal">Some random info about this amazing company and how it makes the world a better place oh ye.</p>
+        <a class="btn btn-outline-secondary" href="#">click me idk</a>
+    </div>
+
+
+<!--footer-->
+<nav th:replace="fragments/footer :: footer"/>
 
 </body>
 </html>
