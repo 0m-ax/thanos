@@ -1,0 +1,38 @@
+.color-primary {
+    color: white;
+    background: #573D76;
+}
+
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled {
+    background: #48315B;
+    border-color: #48315B;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #573D76;
+    border-color: #573D76;
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgb(110, 94, 142);
+}
+
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+    color: black;
+    background-color: #ACB0F7;
+    border-color: #C0CAFF;
+    box-shadow: 0 0 0 0.2rem rgb(138, 141, 198);
+}
+
+.text-primary {
+    color: #333D70;
+}
+
+.text-secondary {
+    color: #47507E;
+}
+
