@@ -1,4 +1,4 @@
-package monster.theundefinedavengers.thanos.auth.service;
+package monster.theundefinedavengers.thanos.profile.service;
 
 import monster.theundefinedavengers.thanos.FileStorageException;
 import org.springframework.beans.factory.annotation.Value;

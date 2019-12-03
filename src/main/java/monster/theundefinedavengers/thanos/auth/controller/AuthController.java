@@ -1,6 +1,6 @@
 package monster.theundefinedavengers.thanos.auth.controller;
 
-import monster.theundefinedavengers.thanos.auth.service.FileUploadService;
+import monster.theundefinedavengers.thanos.profile.service.FileUploadService;
 import monster.theundefinedavengers.thanos.auth.model.User;
 import monster.theundefinedavengers.thanos.auth.model.UserDto;
 import monster.theundefinedavengers.thanos.auth.service.UserServiceImpl;
