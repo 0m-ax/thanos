@@ -69,9 +69,15 @@ public class AuthController {
     }
 
     @PostMapping(value = "/registration")
-    public String registerUserAccount(@Valid UserRegistrationDto userRegistrationDto, Model model) {
+    public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto, BindingResult bindingResult, Model model) {
 
-            User user = userService.registerNewUserAccount(userRegistrationDto);
-            return "redirect:login";
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getAllErrors());
+                System.out.println("Errors !!");
+                return "registration";
+        }
+
+        User user = userService.registerNewUserAccount(userRegistrationDto);
+        return "redirect:login";
     }
 }
