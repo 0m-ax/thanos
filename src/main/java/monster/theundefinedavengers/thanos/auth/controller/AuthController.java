@@ -3,11 +3,19 @@ package monster.theundefinedavengers.thanos.auth.controller;
 import monster.theundefinedavengers.thanos.profile.service.FileUploadService;
 import monster.theundefinedavengers.thanos.auth.model.User;
 import monster.theundefinedavengers.thanos.auth.model.UserDto;
+import monster.theundefinedavengers.thanos.auth.model.UserRegistrationDto;
 import monster.theundefinedavengers.thanos.auth.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,12 +23,21 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/auth")
 public class AuthController {
     @Autowired
     UserServiceImpl userService;
+    @ExceptionHandler(BindException.class)
+    public String validationError(Model model) {
+        UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
+        model.addAttribute("user", userRegistrationDto);
+        model.addAttribute("error",true);
+        return "registration";
+    }
     @PreAuthorize("hasAuthority('USER_ROLE')")
     @GetMapping(value="/test")
     public String test() throws ServletException {
@@ -42,16 +59,17 @@ public class AuthController {
     }
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showRegistrationForm(WebRequest request, Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("user", userDto);
+        UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
+        model.addAttribute("user", userRegistrationDto);
         return "registration";
     }
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registerUserAccount(
-            UserDto userDto,
+            @Valid UserRegistrationDto userRegistrationDto,
             Model model) {
-            model.addAttribute("user", userDto);
-            User user = userService.registerNewUserAccount(userDto);
+
+            model.addAttribute("user", userRegistrationDto);
+            User user = userService.registerNewUserAccount(userRegistrationDto);
             return "registration";
     }
 
@@ -66,8 +84,10 @@ public class AuthController {
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
         return "redirect:/";
     }
-    @GetMapping(value="/uploadFile")
-    public String uploadFile() {
-        return "fileUpload";
+
+    @RequestMapping(value="/profile")
+    public String showProfile() {
+        return "profile";
     }
+
 }
