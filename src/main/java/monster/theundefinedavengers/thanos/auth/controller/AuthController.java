@@ -72,6 +72,9 @@ public class AuthController {
 
     }
 
-
+    @RequestMapping(value="/profile")
+    public String showProfile() {
+        return "profile";
+    }
 
 }
