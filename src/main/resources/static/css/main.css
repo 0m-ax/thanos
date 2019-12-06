@@ -1,3 +1,11 @@
+.bg-doug {
+    background-image: url("/images/IndexDoug.png");
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    margin: 0px;
+}
+
 .color-primary {
     color: white;
     background: #573D76;
