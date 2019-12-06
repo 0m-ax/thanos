@@ -16,6 +16,8 @@ public class User {
 
     private String password;
 
+    private String cvID;
+
     @Transient
     private String passwordConfirm;
 
@@ -68,5 +70,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCvID() {
+        return cvID;
+    }
+
+    public void setCvID(String cvID) {
+        this.cvID = cvID;
     }
 }
