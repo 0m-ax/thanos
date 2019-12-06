@@ -74,4 +74,9 @@ public class AuthController {
             User user = userService.registerNewUserAccount(userRegistrationDto);
             return "redirect:login";
     }
+
+    @RequestMapping(value="/profile")
+    public String showProfile() {
+        return "profile";
+    }
 }
