@@ -10,9 +10,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     private String email;
 
     private String password;
+
+    private String cvID;
 
     @Transient
     private String passwordConfirm;
@@ -26,6 +30,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -58,5 +70,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCvID() {
+        return cvID;
+    }
+
+    public void setCvID(String cvID) {
+        this.cvID = cvID;
     }
 }

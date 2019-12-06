@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+
+<!--    &lt;!&ndash; custom css &ndash;&gt;-->
+<!--    <link rel="stylesheet" th:href="@{/css/main.css}">-->
+
+<!--</head>-->
+<body>
+<nav th:fragment="navbar" class="navbar navbar-dark color-primary navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+        <img th:src="@{/images/thanos-logo.png}" width="30" height="30" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a th:classappend="${#request.requestURI == '/' ? 'nav-link__active' : ''}"
+                   class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a th:classappend="${#request.requestURI == '/auth/registration' ? 'nav-link__active' : ''}"
+                   class="nav-link" href="/auth/registration">Create Account</a>
+            </li>
+            <li class="nav-item">
+                <a th:classappend="${#request.requestURI == '/auth/login' ? 'nav-link__active' : ''}"
+                   class="nav-link" href="/auth/login">Log In</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      Thank you for using THANOS
+    </span>
+    </div>
+</nav>
+</body>
+</html>

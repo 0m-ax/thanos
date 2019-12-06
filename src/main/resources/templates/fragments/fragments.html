@@ -1,0 +1,20 @@
+git<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <title th:text="${title}"></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"/>
+</head>
+
+<body>
+    <!-- Page heading -->
+    <h4 th:fragment="heading" th:text="${text}" class="page-heading"></h4>
+
+
+</body>
+</html>
