@@ -72,9 +72,7 @@ public class AuthController {
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult.getAllErrors());
-                System.out.println("Errors !!");
-                return "registration";
+            return "registration";
         }
 
         User user = userService.registerNewUserAccount(userRegistrationDto);
