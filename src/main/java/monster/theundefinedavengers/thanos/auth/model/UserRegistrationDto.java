@@ -1,13 +1,29 @@
 package monster.theundefinedavengers.thanos.auth.model;
 
+
 import monster.theundefinedavengers.thanos.auth.Validators.PasswordMatches;
 
-@PasswordMatches
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+
+@PasswordMatches(message = "Passwords don't match")
 public class UserRegistrationDto {
 
+    @NotEmpty
+    @Size(min=2, max=30)
     private String name;
+
+    @NotEmpty
+    @Email(message = "Email should be valid")
     private String email;
+
+    @NotEmpty
     private String password;
+
+    @NotEmpty
     private String password2;
 
     public String getEmail() {

@@ -21,8 +21,10 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping(path = "/auth")
 public class AuthController {
+
     @Autowired
     UserServiceImpl userService;
+
     @ExceptionHandler(BindException.class)
     public String validationError(Model model) {
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
@@ -30,15 +32,18 @@ public class AuthController {
         model.addAttribute("error",true);
         return "registration";
     }
+
     @PreAuthorize("hasAuthority('USER_ROLE')")
     @GetMapping(value="/test")
     public String test() throws ServletException {
         return "test";
     }
+
     @GetMapping(value="/login")
     public String login() throws ServletException {
         return "login";
     }
+
     @PostMapping(value="/login")
     public String login(UserDto userDto, HttpServletRequest request,Model model) {
         try {
@@ -50,19 +55,20 @@ public class AuthController {
         }
         return "login";
     }
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+
+    @GetMapping(value = "/registration")
     public String showRegistrationForm(WebRequest request, Model model) {
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
         model.addAttribute("user", userRegistrationDto);
         return "registration";
     }
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registerUserAccount(
-            @Valid UserRegistrationDto userRegistrationDto,
-            Model model) {
 
-            model.addAttribute("user", userRegistrationDto);
-            User user = userService.registerNewUserAccount(userRegistrationDto);
+    @PostMapping(value = "/registration")
+    public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "registration";
+        }
+        User user = userService.registerNewUserAccount(userRegistrationDto);
+        return "redirect:login";
     }
 }
