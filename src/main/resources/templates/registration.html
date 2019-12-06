@@ -10,96 +10,114 @@
     <p class="text-center"><a href="http://theundefinedavengers.monster/">Click here</a> to support the Avengers!:)</p>
     <hr>
     <div class="row">
-            <div th:if="${error}">
-                <script th:inline="javascript" type="text/javascript" >
-                    alert("Passwords don't match");
-                </script>
-            </div>
+        <div th:if="${error}">
+            <script th:inline="javascript" type="text/javascript" >
+                alert("Passwords don't match");
+            </script>
+        </div>
         <aside class="col-sm-4"></aside>
         <aside class="col-sm-4">
+            <div class="card">
+                <article class="card-body">
+                    <div th:if="${param.success}">
+                        <div class="alert alert-info">
+                            You've successfully registered to our awesome app!
+                        </div>
+                    </div>
+                    <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
+                    <hr>
+                    <p class="text-secondary text-center">Enter your new user email and password.</p>
+                    <form method="post" th:object="${user}" >
 
-                <div class="card">
-                    <article class="card-body">
-                        <div th:if="${param.success}">
-                            <div class="alert alert-info">
-                                You've successfully registered to our awesome app!
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control"
+                                       th:classappend="${#fields.hasErrors('name')}? 'is-invalid':''"
+                                       id="name"
+                                       placeholder="Provide your full name"
+                                       type="text"
+                                       th:field="*{name}"
+                                />
+
+                                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback">
+                                    Name Error
+                                </div>
                             </div>
                         </div>
-                        <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
-                        <hr>
-                        <p class="text-secondary text-center">Enter your new user email and password.</p>
-                        <form method="post" th:object="${user}" >
 
-<!--albert shit-->
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control"
+                                   th:classappend="${#fields.hasErrors('email')}? 'is-invalid':''"
+                                   id="email"
+                                   placeholder="E-mail"
+                                   th:field="*{email}"
+                                />
+                                 <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback">
+                                    Email Error
+                                 </div>
+                            </div>
                         </div>
-                    <input class="form-control"
-                           id="name"
-                           placeholder="Provide your full name"
-                           th:field="*{name}"/>
-                    </div>
-                </div>
 
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+
+                        <div class="form-group"
+                             th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control"
+                                   th:classappend="${#fields.hasErrors('password')}? 'is-invalid':''"
+                                   id="password"
+                                   placeholder="Password"
+                                   th:field="*{password}"
+                                   type="password"
+                                />
+                                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="invalid-feedback">
+                                    Password Error
+                                </div>
+                            </div>
                         </div>
-                    <input class="form-control"
-                           id="email"
-                           placeholder="E-mail"
-                           th:field="*{email}"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('email')}"
-                       th:text="${error}">Validation error</p>
-                    </div>
-                </div>
 
+                        <div class="form-group" th:classappend="${#fields.hasErrors('password2')}? 'has-error':''">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control"
+                                   th:classappend="${#fields.hasErrors('password2')}? 'is-invalid':''"
+                                   id="password2"
+                                   placeholder="Repeat password"
+                                   th:field="*{password2}"
+                                   type="password"
+                                />
+                                <div th:if="${#fields.hasErrors('password2')}" th:errors="*{password2}" class="invalid-feedback">
+                                    Password2 Error
+                                </div>
 
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
                         </div>
-                    <input class="form-control"
-                           id="password"
-                           placeholder="Password"
-                           th:field="*{password}"
-                            type="password"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('password')}"
-                       th:text="${error}">Validation error</p>
-                    </div>
-                </div>
 
-                <div class="form-group"
-                     th:classappend="${#fields.hasErrors('password2')}? 'has-error':''">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        <div
+                            th:if="${#fields.hasErrors('global')}"
+                            th:text="${#fields.globalErrors().get(0)}"
+                            class="alert alert-danger" role="alert"
+                        >
+                            Alert
                         </div>
-                    <input class="form-control"
-                           id="password2"
-                           placeholder="Repeat password"
-                           th:field="*{password2}"
-                           type="password"/>
-                    <p class="error-message"
-                       th:each="error : ${#fields.errors('password2')}"
-                       th:text="${error}">Validation error</p>
-                </div>
-                </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary btn-block" type="submit">Register</button>
-                        <span>Already registered? <a href="/" th:href="@{/auth/login}">Login here</a></span>
-                    </div>
 
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" type="submit">Register</button>
+                            <span>Already registered? <a href="/" th:href="@{/auth/login}">Login here</a></span>
+                        </div>
 
-            </form>
+                     </form>
             </article>
         </div>
         </aside>
